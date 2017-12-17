@@ -6,14 +6,14 @@
 #    By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 01:15:13 by bpuschel          #+#    #+#              #
-#    Updated: 2017/12/13 22:19:38 by bpuschel         ###   ########.fr        #
+#    Updated: 2017/12/15 22:30:07 by bpuschel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol
+NAME = wolf3d
 INCLUDE = includes/
 SRC = srcs/
-FILES = update.c draw.c fractol.c init.c hooks.c mouse.c
+FILES = update.c draw.c wolf3d.c init.c hooks.c
 OBJ = $(FILES:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I $(INCLUDE) -g -o
