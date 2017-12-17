@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/16 19:32:01 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/16 22:18:37 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,25 @@ void		parse_map(t_frame *frame, char *file)
 	close(fd);
 	fd = open(file, O_RDONLY);
 	fill_map(frame, fd);
+	close(fd);
+}
+
+static void	wolf3d(t_frame *frame)
+{
+	set_hooks(frame);
+	refresh(frame);
+	mlx_loop(frame->mlx);
+}
+
+int			main(int argc, char **argv)
+{
+	t_frame *frame;
+
+	if (argc == 2)
+	{
+		frame = init_frame();
+		parse_map(frame, argv[1]);
+		wolf3d(frame);
+	}
+	return (0);
 }
