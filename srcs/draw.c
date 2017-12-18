@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:43:44 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 14:33:29 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:16:07 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static void		draw_line(t_frame *f, int x, double w, int c)
 	{
 		t.y = ((((y << 8) - (HEIGHT << 7) + (lh << 7)) * TEX) / lh) / 256;
 		if (f->side == 1)
-			mlx_pixel_put(f->mlx, f->win, x, y,
+			draw_to_img(f, x, y,
 					(f->tex[c][(int)t.y][(int)t.x] >> 1) & 8355711);
 		else
-			mlx_pixel_put(f->mlx, f->win, x, y, f->tex[c][(int)t.y][(int)t.x]);
+			draw_to_img(f, x, y, f->tex[c][(int)t.y][(int)t.x]);
 	}
 }
 

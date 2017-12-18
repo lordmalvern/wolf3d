@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 14:29:55 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:11:49 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ void			set_palette(t_frame *frame)
 			frame->tex[2][y][x] = xor + (xor << 15) - (xor << 9) - (xor << 8);
 		}
 	}
+}
+
+void			init_img(t_frame *frame)
+{
+	frame->img = mlx_new_image(frame->mlx, WIDTH, HEIGHT);
+	if (!frame->img)
+		exit(0);
+	frame->addr = mlx_get_data_addr(frame->img, &(frame->clr_depth),
+			&(frame->addr_size), &(frame->endian));
 }
 
 t_frame			*init_frame(void)

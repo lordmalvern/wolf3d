@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 12:22:19 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:20:05 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int			main(int argc, char **argv)
 	{
 		frame = init_frame();
 		parse_map(frame, "map");
+		init_img(frame);
 		set_hooks(frame);
 		set_palette(frame);
 		refresh(frame);

@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 20:16:24 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 23:17:19 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 15:23:41 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 # include "gfx_helper.h"
 # define TEX 64
 # define ROT 0.1
-# define SPEED 0.16667
+# define SPEED 0.1
 
 typedef struct	s_frame
 {
 	void			*mlx;
 	void			*win;
+	void			*img;
 	t_vect2d		*pos;
 	t_vect2d		*dir;
 	t_vect2d		*plane;
@@ -39,6 +40,10 @@ typedef struct	s_frame
 	int				is_wall;
 	unsigned int	***tex;
 	int				**map;
+	char			*addr;
+	int				clr_depth;
+	int				addr_size;
+	int				endian;
 	int				keys[127];
 
 }				t_frame;
@@ -46,6 +51,8 @@ typedef struct	s_frame
 void			set_hooks(t_frame *frame);
 void			set_palette(t_frame *frame);
 t_frame			*init_frame(void);
+void			init_img(t_frame *frame);
+void			draw_to_img(t_frame *frame, int x, int y, int color);
 void			refresh(t_frame *frame);
 void			cast_rays(t_frame *frame, int x);
 void			draw_frame(t_frame *frame);
