@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 11:55:59 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 12:22:19 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ int			main(int argc, char **argv)
 {
 	t_frame *frame;
 
-	if (argc == 2)
+	if (argc == 1 && argv)
 	{
 		frame = init_frame();
-		parse_map(frame, argv[1]);
+		parse_map(frame, "map");
 		set_hooks(frame);
 		set_palette(frame);
 		refresh(frame);
@@ -103,6 +103,6 @@ int			main(int argc, char **argv)
 		free(frame);
 	}
 	else
-		print_err("Usage: ./wolf3d <map>");
+		print_err("Usage: ./wolf3d");
 	return (0);
 }

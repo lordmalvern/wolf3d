@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:10:56 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 21:49:33 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 12:02:03 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define GFX_HELPER_H
 # include "../libvect/libvect.h"
 # include "wolf3d.h"
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 640
+# define HEIGHT 480
 # define A_RAT 1.78
 # define F_DIST 9
 # define Z_MAX 2147483647
