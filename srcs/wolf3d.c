@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 00:21:12 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 01:20:08 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	fill_map(t_frame *frame, int fd)
 		}
 		free(row);
 		y++;
+		free(buff);
 	}
-	free(buff);
 }
 
 static void	get_dims(t_frame *frame, int fd)
@@ -65,8 +65,8 @@ static void	get_dims(t_frame *frame, int fd)
 		frame->width = width;
 		frame->height++;
 		free(row);
+		free(buff);
 	}
-	free(buff);
 }
 
 void		parse_map(t_frame *frame, char *file)

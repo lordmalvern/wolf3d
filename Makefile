@@ -6,7 +6,7 @@
 #    By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 01:15:13 by bpuschel          #+#    #+#              #
-#    Updated: 2017/12/15 22:30:07 by bpuschel         ###   ########.fr        #
+#    Updated: 2017/12/18 00:52:27 by bpuschel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = srcs/
 FILES = update.c draw.c wolf3d.c init.c hooks.c
 OBJ = $(FILES:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I $(INCLUDE) -g -o
+CFLAGS = -Wall -Werror -Wextra -I $(INCLUDE) -o
 LDFLAGS = -Llibft/ -Llibvect/ -Lmlx/
 LDLIBS = -lftprintf -lvect -lmlx -framework OpenGL -framework AppKit
 .PHONY: all clean fclean re
