@@ -6,7 +6,7 @@
 #    By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/08 01:15:13 by bpuschel          #+#    #+#              #
-#    Updated: 2017/12/18 00:52:27 by bpuschel         ###   ########.fr        #
+#    Updated: 2017/12/18 11:50:03 by bpuschel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ LDFLAGS = -Llibft/ -Llibvect/ -Lmlx/
 LDLIBS = -lftprintf -lvect -lmlx -framework OpenGL -framework AppKit
 .PHONY: all clean fclean re
 
-all: libftprintf-all libvect-all libmlx-all $(NAME)
+all: libftprintf-all libvect-all libmlx-all 
+	$(MAKE) $(NAME)
 
 clean: libftprintf-clean libvect-clean libmlx-clean
 	rm -rf $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 11:19:16 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:46:29 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,7 @@ int			main(int argc, char **argv)
 		mlx_loop(frame->mlx);
 		free(frame);
 	}
+	else
+		print_err("Usage: ./wolf3d <map>");
 	return (0);
 }
