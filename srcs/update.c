@@ -6,30 +6,32 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 12:22:45 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 13:54:16 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 22:10:02 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-void			on_loop_move(t_frame *frame)
+void			on_loop_move(t_frame *f)
 {
-	if (frame->keys[KEY_W] || frame->keys[KEY_UP])
+	if (f->keys[KEY_W] || f->keys[KEY_UP])
 	{
-		if(!frame->map[frame->pos->x + frame->dir->x][frame->pos->y])
-			frame->pos->x += frame->dir->x;
-		if(!frame->map[frame->pos->x][frame->pos->y + frame->pos->y])
-			frame->pos->y += frame->dir->y;
+		if(!f->map[(int)(f->pos->x + f->dir->x)][(int)f->pos->y])
+			f->pos->x += f->dir->x;
+		if(!f->map[(int)f->pos->x][(int)(f->pos->y + f->pos->y)])
+			f->pos->y += f->dir->y;
 	}
-	if (frame->keys[KEY_S] || frame->keys[KEY_DOWN])
+	if (f->keys[KEY_S] || f->keys[KEY_DOWN])
 	{
-		if(!frame->map[frame->pos->x - frame->dir->x][frame->pos->y])
-			frame->pos->x -= frame->dir->x;
-		if(!frame->map[frame->pos->x][frame->pos->y - frame->pos->y])
-			frame->pos->y -= frame->dir->y;
+		if(!f->map[(int)(f->pos->x - f->dir->x)][(int)f->pos->y])
+			f->pos->x -= f->dir->x;
+		if(!f->map[(int)f->pos->x][(int)(f->pos->y - f->pos->y)])
+			f->pos->y -= f->dir->y;
 	}
 }
 
 void			refresh(t_frame *frame)
 {
+	mlx_clear_window (frame->mlx, frame->win);
+	draw_frame(frame);
 }

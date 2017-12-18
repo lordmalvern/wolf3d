@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 21:18:39 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 22:07:00 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	fill_map(t_frame *frame, int fd)
 		x = -1;
 		while (++x < frame->width)
 		{
-			frame[y][x] = ft_atoi(row[x]);
+			frame->map[y][x] = ft_atoi(row[x]);
 			free(row[x]);
 		}
 		free(row);
@@ -48,8 +48,8 @@ static void	get_dims(t_frame *frame, int fd)
 	{
 		row = ft_strsplit(buff, ' ');
 		width = -1;
-		while (buff[++width])
-			if (!ft_isdigit(buff[width]))
+		while (row[++width])
+			if (!ft_isdigit(row[width][0]))
 			{
 				ft_putendl("Error: invalid map");
 				exit(1);

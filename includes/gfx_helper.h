@@ -6,14 +6,14 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:10:56 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/14 20:21:14 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:49:33 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GFX_HELPER_H
 # define GFX_HELPER_H
 # include "../libvect/libvect.h"
-# include "fractol.h"
+# include "wolf3d.h"
 # define WIDTH 1280
 # define HEIGHT 720
 # define A_RAT 1.78

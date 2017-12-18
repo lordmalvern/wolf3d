@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 20:16:24 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 21:47:07 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 22:03:00 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+# include <fcntl.h>
 # include "../libft/ft_printf.h"
 # include "../libvect/libvect.h"
 # include "../mlx/mlx.h"
 # include "gfx_helper.h"
 # define TEX 64
+# define ROT 0.1
 
 typedef struct	s_frame
 {
@@ -44,7 +46,7 @@ void			set_hooks(t_frame *frame);
 void			set_palette(t_frame *frame);
 t_frame			*init_frame(void);
 void			refresh(t_frame *frame);
-void			cast_rays(t_frame *frame);
+void			cast_rays(t_frame *frame, int x);
 void			draw_frame(t_frame *frame);
 void			parse_map(t_frame *frame, char *file);
 int				on_expose(t_frame *frame);

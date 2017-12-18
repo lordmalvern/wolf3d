@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 21:11:53 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 22:19:17 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_frame			*init_frame(void)
 {
 	t_frame *frame;
 	frame = malloc(sizeof(t_frame));
-	frame->pos = init_2d(24, 15);
+	frame->pos = init_2d(23, 12);
 	frame->dir = init_2d(-1, 0);
 	frame->plane = init_2d(0, .66);
 	frame->r_dir = init_2d(0, 0);
