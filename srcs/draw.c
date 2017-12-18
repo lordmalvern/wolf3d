@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:43:44 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 00:02:03 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:17:48 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void			cast_rays(t_frame *f, int x)
 	step = init_2d((f->r_dir->x < 0) ? -1 : 1, (f->r_dir->y < 0) ? -1 : 1);
 	delta = init_2d(
 			sqrt(1 + (f->r_dir->y * f->r_dir->y) / (f->r_dir->x * f->r_dir->x)),
-			sqrt(1 + (f->r_dir->x * f->r_dir->x) / (f->r_dir->y * f->r_dir->y))
-			);
+			sqrt(1 + (f->r_dir->x * f->r_dir->x)
+				/ (f->r_dir->y * f->r_dir->y)));
 	if (f->r_dir->x < 0)
 		f->dist->x = (f->pos->x - (int)f->pos->x) * delta->x;
 	else

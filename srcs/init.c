@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 22:19:17 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:16:54 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void			set_palette(t_frame *frame)
 t_frame			*init_frame(void)
 {
 	t_frame *frame;
+
 	frame = malloc(sizeof(t_frame));
 	frame->pos = init_2d(23, 12);
 	frame->dir = init_2d(-1, 0);

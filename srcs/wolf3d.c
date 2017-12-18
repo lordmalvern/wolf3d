@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 01:20:08 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:19:16 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	print_err(char *err)
 
 static void	fill_map(t_frame *frame, int fd)
 {
-	int y;
-	int x;
-	char *buff;
-	char **row;
+	int		y;
+	int		x;
+	char	*buff;
+	char	**row;
 
 	y = 0;
 	frame->map = (int **)malloc(frame->height * sizeof(int *));
@@ -45,9 +45,9 @@ static void	fill_map(t_frame *frame, int fd)
 
 static void	get_dims(t_frame *frame, int fd)
 {
-	char *buff;
-	char **row;
-	int width;
+	char	*buff;
+	char	**row;
+	int		width;
 
 	frame->height = 0;
 	while (get_next_line(fd, &buff))

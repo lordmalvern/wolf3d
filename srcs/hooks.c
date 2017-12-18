@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:52:36 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 22:34:04 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:18:31 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int				on_expose(t_frame *frame)
 
 int				on_loop(t_frame *frame)
 {
-
 	on_loop_move(frame);
 	if (frame->keys[KEY_A] || frame->keys[KEY_LEFT])
 	{
@@ -39,7 +38,7 @@ int				on_loop(t_frame *frame)
 int				on_exit(t_frame *frame)
 {
 	mlx_destroy_window(frame->mlx, frame->win);
-	exit (0);
+	exit(0);
 }
 
 int				on_keypress(int code, t_frame *frame)
