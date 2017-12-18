@@ -6,7 +6,7 @@
 /*   By: bpuschel <bpuschel@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 11:45:59 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/12 23:13:30 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 13:29:13 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void			ft_identity(double mat[4][4]);
 void			ft_transmat(double mat[4][4], t_vect3d *offset);
 void			ft_scalemat(double mat[4][4], t_vect3d *scale);
 void			ft_rotmat(double mat[4][4], t_vect3d *rot);
+void			ft_rot2d(t_vect2d *a, double theta);
 #endif

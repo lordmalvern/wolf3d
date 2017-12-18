@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 20:16:24 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/16 19:28:35 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 17:53:20 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_frame
 	t_vect2d		*pos;
 	t_vect2d		*dir;
 	t_vect2d		*plane;
+	t_vect2d		*r_dir;
 	int				height;
 	int				width;
 	unsigned int	*colors;
@@ -48,4 +49,5 @@ int				on_loop(t_frame *frame);
 int				on_exit(t_frame *frame);
 int				on_keypress(int code, t_frame *frame);
 int				on_keyrelease(int code, t_frame *frame);
+void			on_loop_move(t_frame *frame);
 #endif

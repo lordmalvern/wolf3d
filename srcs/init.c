@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/16 21:54:48 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/16 22:28:10 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void			set_hooks(t_frame *frame)
 
 void			set_palette(t_frame *frame)
 {
+	frame->colors = malloc(3 * sizeof(unsigned int));
+	frame->colors[0] = 0xFF0000;
+	frame->colors[1] = 0x00FF00;
+	frame->colors[2] = 0x0000FF;
 }
 
 t_frame			*init_frame(void)
