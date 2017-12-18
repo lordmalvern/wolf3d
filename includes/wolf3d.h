@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 20:16:24 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 22:03:00 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 23:17:19 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "gfx_helper.h"
 # define TEX 64
 # define ROT 0.1
+# define SPEED 0.16667
 
 typedef struct	s_frame
 {

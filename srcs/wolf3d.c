@@ -6,11 +6,17 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 22:07:00 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 00:21:12 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
+
+static void	print_err(char *err)
+{
+	ft_putendl(err);
+	exit(1);
+}
 
 static void	fill_map(t_frame *frame, int fd)
 {
@@ -49,18 +55,16 @@ static void	get_dims(t_frame *frame, int fd)
 		row = ft_strsplit(buff, ' ');
 		width = -1;
 		while (row[++width])
-			if (!ft_isdigit(row[width][0]))
-			{
-				ft_putendl("Error: invalid map");
-				exit(1);
-			}
-		if (frame->width != 0 && frame->width < width)
 		{
-			ft_putendl("Error: invalid map");
-			exit(1);
+			if (!ft_isdigit(row[width][0]))
+				print_err("Error: invalid map");
+			free(row[width]);
 		}
+		if (frame->width != 0 && frame->width < width)
+			print_err("Error: invalid map");
 		frame->width = width;
 		frame->height++;
+		free(row);
 	}
 	free(buff);
 }
@@ -71,23 +75,12 @@ void		parse_map(t_frame *frame, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putendl("Error: Invalid file path");
-		exit(1);
-	}
+		print_err("Error: Invalid file path");
 	get_dims(frame, fd);
 	close(fd);
 	fd = open(file, O_RDONLY);
 	fill_map(frame, fd);
 	close(fd);
-}
-
-static void	wolf3d(t_frame *frame)
-{
-	set_hooks(frame);
-	set_palette(frame);
-	refresh(frame);
-	mlx_loop(frame->mlx);
 }
 
 int			main(int argc, char **argv)
@@ -98,7 +91,11 @@ int			main(int argc, char **argv)
 	{
 		frame = init_frame();
 		parse_map(frame, argv[1]);
-		wolf3d(frame);
+		set_hooks(frame);
+		set_palette(frame);
+		refresh(frame);
+		mlx_loop(frame->mlx);
+		free(frame);
 	}
 	return (0);
 }

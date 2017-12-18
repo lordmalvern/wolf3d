@@ -6,36 +6,36 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:43:44 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/17 23:05:16 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 00:02:03 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
 
-static void		draw_line(t_frame *f, int x, double wall_dist, int c)
+static void		draw_line(t_frame *f, int x, double w, int c)
 {
 	int			lh;
 	int			y;
 	int			le;
-	double		wall;
+	double		wx;
 	t_vect2d	t;
 
-	lh = HEIGHT / wall_dist;
+	lh = HEIGHT / w;
 	y = -lh / 2 + HEIGHT / 2;
 	y = (y < 0) ? -1 : y - 1;
 	le = lh / 2 + HEIGHT / 2;
 	le = (le >= HEIGHT) ? HEIGHT - 1 : le;
-	wall = (!f->side) ? f->pos->y + wall_dist * f->r_dir->y :
-		f->pos->x + wall_dist * f->r_dir->x;
-	wall -= floor(wall);
-	t.x = wall * TEX;
+	wx = (!f->side) ? f->pos->y + w * f->r_dir->y : f->pos->x + w * f->r_dir->x;
+	wx -= floor(wx);
+	t.x = wx * TEX;
 	t.x = (!f->side && f->r_dir->x > 0) ? TEX - t.x - 1 : t.x;
 	t.x = (f->side && f->r_dir->y < 0) ? TEX - t.x - 1 : t.x;
 	while (++y < le)
 	{
 		t.y = (((y * 256 - HEIGHT * 128 + lh * 128) * TEX) / lh) / 256;
 		if (f->side == 1)
-			mlx_pixel_put(f->mlx, f->win, x, y, f->tex[c][(int)t.y][(int)t.x] / 2);
+			mlx_pixel_put(f->mlx, f->win, x, y,
+					f->tex[c][(int)t.y][(int)t.x] / 2);
 		else
 			mlx_pixel_put(f->mlx, f->win, x, y, f->tex[c][(int)t.y][(int)t.x]);
 	}
@@ -50,17 +50,16 @@ static void		dda(t_frame *f, int x, t_vect2d *delta, t_vect2d *s)
 	map = init_2d((int)f->pos->x, (int)f->pos->y);
 	while (!f->is_wall)
 	{
+		f->side = (f->dist->x < f->dist->y) ? 0 : 1;
 		if (f->dist->x < f->dist->y)
 		{
 			f->dist->x += delta->x;
 			map->x += s->x;
-			f->side = 0;
 		}
 		else
 		{
 			f->dist->y += delta->y;
 			map->y += s->y;
-			f->side = 1;
 		}
 		f->is_wall = (f->map[(int)map->x][(int)map->y] > 0) ? 1 : 0;
 	}
@@ -68,6 +67,7 @@ static void		dda(t_frame *f, int x, t_vect2d *delta, t_vect2d *s)
 		((int)map->x - f->pos->x + (1 - s->x) / 2) / f->r_dir->x :
 		((int)map->y - f->pos->y + (1 - s->y) / 2) / f->r_dir->y;
 	draw_line(f, x, wall_dist, f->map[(int)map->x][(int)map->y] - 1);
+	free(map);
 }
 
 void			cast_rays(t_frame *f, int x)
