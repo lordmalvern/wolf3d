@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/16 22:28:10 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:11:53 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,29 @@ void			set_hooks(t_frame *frame)
 
 void			set_palette(t_frame *frame)
 {
-	frame->colors = malloc(3 * sizeof(unsigned int));
-	frame->colors[0] = 0xFF0000;
-	frame->colors[1] = 0x00FF00;
-	frame->colors[2] = 0x0000FF;
+	int x;
+	int y;
+	int xor;
+
+	frame->tex = malloc(3 * sizeof(unsigned int **));
+	frame->tex[0] = malloc(TEX * sizeof(unsigned int *));
+	frame->tex[1] = malloc(TEX * sizeof(unsigned int *));
+	frame->tex[2] = malloc(TEX * sizeof(unsigned int *));
+	y = -1;
+	while (++y < TEX)
+	{
+		frame->tex[0][y] = malloc(TEX * sizeof(unsigned int));
+		frame->tex[1][y] = malloc(TEX * sizeof(unsigned int));
+		frame->tex[2][y] = malloc(TEX * sizeof(unsigned int));
+		x = -1;
+		while (++x < TEX)
+		{
+			xor = (x * 256 / TEX) ^ (y * 256 / TEX);
+			frame->tex[0][y][x] = xor + 256 * xor + 65536 * xor;
+			frame->tex[1][y][x] = xor + 128 * xor;
+			frame->tex[2][y][x] = xor + 32000 * xor;
+		}
+	}
 }
 
 t_frame			*init_frame(void)
@@ -36,6 +55,8 @@ t_frame			*init_frame(void)
 	frame->pos = init_2d(24, 15);
 	frame->dir = init_2d(-1, 0);
 	frame->plane = init_2d(0, .66);
+	frame->r_dir = init_2d(0, 0);
+	frame->dist = init_2d(0, 0);
 	frame->mlx = mlx_init();
 	frame->win = mlx_new_window(frame->mlx, WIDTH, HEIGHT, "Wolf3D");
 	return (frame);

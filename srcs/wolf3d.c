@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/16 22:18:37 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:18:39 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		parse_map(t_frame *frame, char *file)
 static void	wolf3d(t_frame *frame)
 {
 	set_hooks(frame);
+	set_palette(frame);
 	refresh(frame);
 	mlx_loop(frame->mlx);
 }
