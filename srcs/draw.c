@@ -6,11 +6,21 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:43:44 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 11:17:48 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:33:29 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/wolf3d.h"
+
+static t_vect2d	*init_delta(t_frame *f)
+{
+	double x_2;
+	double y_2;
+
+	x_2 = f->r_dir->x * f->r_dir->x;
+	y_2 = f->r_dir->y * f->r_dir->y;
+	return (init_2d(sqrt(1 + y_2 / x_2), sqrt(1 + x_2 / y_2)));
+}
 
 static void		draw_line(t_frame *f, int x, double w, int c)
 {
@@ -32,10 +42,10 @@ static void		draw_line(t_frame *f, int x, double w, int c)
 	t.x = (f->side && f->r_dir->y < 0) ? TEX - t.x - 1 : t.x;
 	while (++y < le)
 	{
-		t.y = (((y * 256 - HEIGHT * 128 + lh * 128) * TEX) / lh) / 256;
+		t.y = ((((y << 8) - (HEIGHT << 7) + (lh << 7)) * TEX) / lh) / 256;
 		if (f->side == 1)
 			mlx_pixel_put(f->mlx, f->win, x, y,
-					f->tex[c][(int)t.y][(int)t.x] / 2);
+					(f->tex[c][(int)t.y][(int)t.x] >> 1) & 8355711);
 		else
 			mlx_pixel_put(f->mlx, f->win, x, y, f->tex[c][(int)t.y][(int)t.x]);
 	}
@@ -80,10 +90,7 @@ void			cast_rays(t_frame *f, int x)
 	f->r_dir->x = f->dir->x + f->plane->x * camera;
 	f->r_dir->y = f->dir->y + f->plane->y * camera;
 	step = init_2d((f->r_dir->x < 0) ? -1 : 1, (f->r_dir->y < 0) ? -1 : 1);
-	delta = init_2d(
-			sqrt(1 + (f->r_dir->y * f->r_dir->y) / (f->r_dir->x * f->r_dir->x)),
-			sqrt(1 + (f->r_dir->x * f->r_dir->x)
-				/ (f->r_dir->y * f->r_dir->y)));
+	delta = init_delta(f);
 	if (f->r_dir->x < 0)
 		f->dist->x = (f->pos->x - (int)f->pos->x) * delta->x;
 	else

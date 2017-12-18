@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 11:16:54 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:29:55 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void			set_palette(t_frame *frame)
 		x = -1;
 		while (++x < TEX)
 		{
-			xor = (x * 256 / TEX) ^ (y * 256 / TEX);
-			frame->tex[0][y][x] = xor + 256 * xor + 65536 * xor;
-			frame->tex[1][y][x] = xor + 128 * xor;
-			frame->tex[2][y][x] = xor + 32000 * xor;
+			xor = ((x << 8) / TEX) ^ ((y << 8) / TEX);
+			frame->tex[0][y][x] = xor + (xor << 8) + (xor << 16);
+			frame->tex[1][y][x] = xor + (xor << 7);
+			frame->tex[2][y][x] = xor + (xor << 15) - (xor << 9) - (xor << 8);
 		}
 	}
 }
