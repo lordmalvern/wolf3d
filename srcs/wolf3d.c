@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 11:46:29 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:55:59 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ int			main(int argc, char **argv)
 		set_hooks(frame);
 		set_palette(frame);
 		refresh(frame);
+		ft_putendl("Controls:\n"
+				"W or Up Arrow: Move forward\n"
+				"S or Down Arrow: Move backward\n"
+				"A or Left Arrow: Turn left\n"
+				"D or Right Arrow: Turn right");
 		mlx_loop(frame->mlx);
 		free(frame);
 	}
