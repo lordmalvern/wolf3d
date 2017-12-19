@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 19:41:47 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 15:11:49 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:33:28 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void			set_palette(t_frame *frame)
 	int y;
 	int xor;
 
-	frame->tex = malloc(3 * sizeof(unsigned int **));
+	frame->tex = malloc(NTEX * sizeof(unsigned int **));
 	frame->tex[0] = malloc(TEX * sizeof(unsigned int *));
 	frame->tex[1] = malloc(TEX * sizeof(unsigned int *));
 	frame->tex[2] = malloc(TEX * sizeof(unsigned int *));

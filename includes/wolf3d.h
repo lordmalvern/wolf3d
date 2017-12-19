@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 20:16:24 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 15:23:41 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:31:51 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # include "../mlx/mlx.h"
 # include "gfx_helper.h"
 # define TEX 64
+# define NTEX 3
 # define ROT 0.1
 # define SPEED 0.1
+# define R(n, a, b) (n > a && n < b)
 
 typedef struct	s_frame
 {
