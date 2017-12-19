@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 15:20:05 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/18 17:50:38 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	print_err(char *err)
 	exit(1);
 }
 
-static void	fill_map(t_frame *frame, int fd)
+static void	fill_map(t_frame *f, int fd)
 {
 	int		y;
 	int		x;
@@ -26,15 +26,19 @@ static void	fill_map(t_frame *frame, int fd)
 	char	**row;
 
 	y = 0;
-	frame->map = (int **)malloc(frame->height * sizeof(int *));
+	f->map = (int **)malloc(f->height * sizeof(int *));
 	while (get_next_line(fd, &buff))
 	{
 		row = ft_strsplit(buff, ' ');
-		frame->map[y] = (int *)malloc(frame->width * sizeof(int));
+		f->map[y] = (int *)malloc(f->width * sizeof(int));
 		x = -1;
-		while (++x < frame->width)
+		while (++x < f->width)
 		{
-			frame->map[y][x] = ft_atoi(row[x]);
+			f->map[y][x] = ft_atoi(row[x]);
+			if ((f->map[y][x] == 0 && (y == 0 || y == f->height - 1 || x == 0
+							|| x == f->width - 1)) || (f->map[y][x] != 0
+							&& x == f->pos->y && y == f->pos->x))
+				print_err("Error: No outer walls or player spawn in wall");
 			free(row[x]);
 		}
 		free(row);
