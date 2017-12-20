@@ -6,7 +6,7 @@
 /*   By: bpuschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:25:50 by bpuschel          #+#    #+#             */
-/*   Updated: 2017/12/18 18:52:13 by bpuschel         ###   ########.fr       */
+/*   Updated: 2017/12/19 16:17:52 by bpuschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	fill_map(t_frame *f, int fd)
 		while (++x < f->width)
 		{
 			f->map[y][x] = ft_atoi(row[x]);
-			if ((f->map[y][x] == 0 && (!R(y, 0, f->height)
-							|| !R(x, 0, f->width)))
+			if ((f->map[y][x] == 0 && (!R(y, 0, f->height - 1)
+							|| !R(x, 0, f->width - 1)))
 					|| (f->map[y][x] != 0 && x == f->pos->y && y == f->pos->x)
 					|| !R(f->map[y][x], -1, NTEX + 1))
 				print_err("Error: Bad map construction");
