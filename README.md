@@ -17,4 +17,4 @@ __A or Left Arrow:__ Turn left
 
 __D or Right Arrow:__ Turn right
 
-![GIF of Wolf3D running](https://media.giphy.com/media/26Ff4OguPao4BqBmo/giphy.gif)
+![GIF of Wolf3D running](https://media.giphy.com/media/l4Ep5Wc5mMF42A1y0/giphy.gif)
